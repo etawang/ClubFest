@@ -80,7 +80,7 @@ def index(request, table_id=None):
 			else:
 				print "This club cannot be found."
 		elif club_category!="":
-			searchclubs=Club.objects.filter(club_category=club_category)
+			searchclubs=Club.objects.filter(category=club_category)
 			if searchclubs:
 				for eachclub in searchclubs:
 					print eachclub.club_name
