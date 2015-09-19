@@ -66,26 +66,25 @@ def index(request, table_id=None):
 		  	form = ChangeClubForm()
 		request_dict['form'] = form
 
-	if request.method == 'GET':
-	 	form2 = SearchClubForm(request.GET)
-		if form2.is_valid():
-		  	club_name=form2.cleaned_data['club_name']
-		  	club_categ3ory =form2.cleaned_data['club_category']
-		  	if club_name !="":
-				thisclub=Club.objects.filter(club_name=club_name)
-			  	if thisclub:
-					if club_category=="":
-						request_dict['highlighted_club']=thisclub[0].table_id
-					elif thisclub[0].category==club_category:
-						print "The club you are searching is not in the given category. Please check!"
-				else:
-					print "This club cannot be found."
+ 	form2 = SearchClubForm(request.GET)
+	if form2.is_valid():
+	  	club_name=form2.cleaned_data['club_name']
+	  	club_categ3ory =form2.cleaned_data['club_category']
+	  	if club_name !="":
+			thisclub=Club.objects.filter(club_name=club_name)
+		  	if thisclub:
+				if club_category=="":
+					request_dict['highlighted_club']=thisclub[0].table_id
+				elif thisclub[0].category==club_category:
+					print "The club you are searching is not in the given category. Please check!"
 			else:
-				searchclubs=Club.objects.filter(club_category=club_category[0])
-				if searchclubs:
-					for eachclub in searchclubs:
-						print eachclub.club_name
-						this_tableid=eachclub.table_id 
-		request_dict['form2']=form2
+				print "This club cannot be found."
+		else:
+			searchclubs=Club.objects.filter(club_category=club_category[0])
+			if searchclubs:
+				for eachclub in searchclubs:
+					print eachclub.club_name
+					this_tableid=eachclub.table_id 
+	request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))
