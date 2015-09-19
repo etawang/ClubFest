@@ -12,8 +12,8 @@ def index(request, table_id=None):
     except Map.DoesNotExist:
         pass
     try:
-        club_object = Club.objects.get(id=2)
-    except Club.DoesNotExist
+        club_obj = Club.objects.get(id=2)
+    except Club.DoesNotExist:
         pass
     #template = loader.get_template('map.html')
     template = loader.get_template('search.html')

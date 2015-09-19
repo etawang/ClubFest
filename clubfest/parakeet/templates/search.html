@@ -4,12 +4,12 @@
 </head>
 <body>
 <h1>Search Club</h1>
-{% if club %}
     <form>
     Club name: <input type="text" name="club_name"><br>
     Club category: <select name="category">
                       {% for (k,v) in club.CATEGORY_CHOICES %}
                       <option value="{{k}}">{{v}}</option>
+                      {% endfor %}
     <br>
     <input type="submit" value="Search">
     </form>
