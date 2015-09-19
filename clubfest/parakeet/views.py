@@ -31,6 +31,19 @@ class SearchClubForm(forms.Form):
 	club_name = forms.CharField(label="Club Name:")
 	club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category")
 
+def full_map_for_map(map_obj):
+  category_map = []
+  for table_row in map_obj.tables:
+    map_row = []
+    for table in table_row:
+      clubs = Club.objects.filter(table_id=table)
+      if clubs:
+        map_row.append((table, clubs[0].category))
+      else:
+        map_row.append((table, 'blank'))
+    category_map.append(map_row)
+  return category_map
+
 def index(request, table_id=None):
 	try:
 		map_obj = Map.objects.get(id=1)
@@ -38,7 +51,7 @@ def index(request, table_id=None):
 		pass
   	template = loader.get_template('map.html')
   	request_dict = {}
-  	request_dict['map'] = map_obj
+  	request_dict['map'] = full_map_for_map(map_obj)
   	if table_id:
 		table_id = int(table_id)
 		clubs = Club.objects.filter(table_id=table_id)
@@ -85,7 +98,7 @@ def index(request, table_id=None):
 				if searchclubs:
 					for eachclub in searchclubs:
 						print eachclub.club_name
-						this_tableid=eachclub.table_id 
+						this_tableid=eachclub.table_id
 		request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))

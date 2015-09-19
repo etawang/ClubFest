@@ -15,17 +15,17 @@
 {% if map %}
 
   <table>
-    {% for table_row in map.tables %}
+    {% for table_row in map %}
       <tr>
         {% for table in table_row %}
           {% if table == selected_table %}
-            <td id="{{ table }}" class="selected">
-                <b>{{ table }}</b>
+            <td id="{{ table.0 }}" class="{{ table.1 }} selected">
+                <b>{{ table.0 }}</b>
             </td>
           {% else %}
-            <td id="{{ table }}">
-              {% if table %}
-              <a href="{{ table }}">{{ table }}</a>
+            <td id="{{ table.0 }}" class="{{ table.1 }}">
+              {% if table.0 %}
+              <a href="{{ table.0 }}">{{ table.0 }}</a>
               {% else %}
                 _
               {% endif %}
