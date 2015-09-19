@@ -5,11 +5,12 @@
 <body>
 <h1>Map</h1>
 {% if map %}
+
   <table>
     {% for table_row in map.tables %}
       <tr>
         {% for table in table_row %}
-          {% ifequal table selected_table %}
+          {% if table == selected_table %}
             <td id="{{ table }}" class="selected">
                 <b>{{ table }}</b>
             </td>
@@ -21,12 +22,25 @@
                 _
               {% endif %}
             </td>
-          {% endifequal %}
+          {% endif %}
         {% endfor %}
       </tr>
     {% endfor %}
 
   </table>
+  {% if club %}
+    <div id='class-descr'>
+      <h3>{{ club.club_name }}</h3>
+      <p>{{ club.category }}</p>
+    </div>
+  {% endif %}
+  {% if selected_table %}
+    <form action="/{{ selected_table }}" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Save">
+    </form>
+  {% endif %}
 {% else %}
   <p>No map loaded</p>
 {% endif %}

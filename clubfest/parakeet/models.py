@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 class Club(models.Model):
-    club_name = models.CharField(max_length=256)
+    club_name = models.CharField(max_length=256, default='NoName')
     table_id = models.IntegerField()
     OTHER='othr'
     SPORTS="sprt"
