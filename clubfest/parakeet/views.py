@@ -74,18 +74,18 @@ def index(request, table_id=None):
 		  	if club_name !="":
 				thisclub=Club.objects.filter(club_name=club_name)
 			  	if thisclub:
-				if thisclub[0] && thisclub[0].category==club_category:
-					request_dict['highlighted_club']=thisclub[0].table_id
+					if thisclub[0] && thisclub[0].category==club_category:
+						request_dict['highlighted_club']=thisclub[0].table_id
+					else:
+						print "The club you are searching is not in the given category. Please check!"
 				else:
-					print "The club you are searching is not in the given category. Please check!"
-			elif:
-				print "This club cannot be found."
-		else:
-			clubs=Club.objects.filter(club_category=club_category[0])
-			if clubs:
-			for eachclub in clubs:
-				print eachclub.club_name
-				this_tableid=eachclub.table_id 
+					print "This club cannot be found."
+			else:
+				clubs=Club.objects.filter(club_category=club_category[0])
+				if clubs:
+					for eachclub in clubs:
+						print eachclub.club_name
+						this_tableid=eachclub.table_id 
 		request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))
