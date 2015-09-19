@@ -1,25 +1,27 @@
 <html>
 <head>
   <title> Clubfest App</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
 </head>
 <body>
-<h1>Map</h1>
+<h1>Clubfest Map</h1>
+<p class="p1">Performance Area</p>
 {% if map %}
-
-  <table>
+  <table class="table">
     {% for table_row in map.tables %}
       <tr>
         {% for table in table_row %}
           {% if table == selected_table %}
-            <td id="{{ table }}" class="selected">
-                <b>{{ table }}</b>
+            <td id="table-{{ table }}" class="selected">
+                <p class="highlight"><b>{{ table }}</b></p>
             </td>
           {% else %}
-            <td id="{{ table }}">
+            <td id="table-{{ table }}">
               {% if table %}
-              <a href="{{ table }}">{{ table }}</a>
+              <p class="clickable"> <a href="{{ table }}">{{ table }}</a></p>
               {% else %}
-                _
+                <p class="noid">_</p>
               {% endif %}
             </td>
           {% endif %}
@@ -35,7 +37,7 @@
     </div>
   {% endif %}
   {% if selected_table %}
-    <form action="/{{ selected_table }}" method="post">
+    <form id='club-id-form' action="/{{ selected_table }}" method="post">
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="Save">
