@@ -5,6 +5,7 @@
   <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
 </head>
 <body>
+<h1>Clubfest Map</h1>
 <h1>Search Clubs</h1>
 {% if highlighted_club %}
   <form action="/{{highlighted_club}}" method="get">
@@ -13,7 +14,7 @@
      <input type="submit" value="Search">
   </form>
 {% endif %}
-<h1>Clubfest Map</h1>
+<h1 class="exit1">Statler Exit</h1>
 <p class="p1">Performance Area</p>
 {% if map %}
   <table class="table">
