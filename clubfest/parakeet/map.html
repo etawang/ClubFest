@@ -1,0 +1,25 @@
+<html>
+<head>
+  <title> Clubfest App</title>
+</head>
+<body>
+<h1>Map</h1>
+{% if map %}
+  <table>
+    {% for table_row in map.tables %}
+      <tr>
+        {% for table in table_row %}
+          <td>
+            {{ table }}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+
+  </table>
+{% else %}
+  <p>No map loaded</p>
+{% endif %}
+</body>
+
+</html>

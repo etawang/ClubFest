@@ -18,3 +18,6 @@ class Map(models.Model):
             models.IntegerField()
         ),
     )
+
+class Event(models.Model):
+    emap = models.ForeignKey(Map)
