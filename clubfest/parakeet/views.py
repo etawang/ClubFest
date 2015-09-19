@@ -55,15 +55,15 @@ def index(request, table_id=None):
 				club = clubs[0]
 			  	club.table_id = -1
 			  	club.save(update_fields=['table_id'])
-			clubs = Club.objects.filter(pk=data['club_id'])
-			if clubs[0]:
-			  	club = clubs[0]
-			  	club.table_id = table_id
-			  	club.save(update_fields=['table_id'])
-			  	request_dict['club'] = clubs[0]
-			  	request_dict['message'] = 'Sucessfully changed club'
-		else:
-		  	form = ChangeClubForm()
+				clubs = Club.objects.filter(pk=data['club_id'])
+				if clubs[0]:
+				  	club = clubs[0]
+				  	club.table_id = table_id
+				  	club.save(update_fields=['table_id'])
+				  	request_dict['club'] = clubs[0]
+				  	request_dict['message'] = 'Sucessfully changed club'
+			else:
+		  		form = ChangeClubForm()
 		request_dict['form'] = form
 
  	form2 = SearchClubForm(request.POST)
@@ -74,10 +74,10 @@ def index(request, table_id=None):
 	  	if club_name !="":
 			thisclub=Club.objects.filter(club_name=club_name)
 		  	if thisclub:
-				if club_category=="Choose" ||club_category==thisclub[0].category:
+				if club_category=="Choose" or club_category==thisclub[0].category:
 					print thisclub[0].table_id
 					request_dict['highlighted_club']=thisclub[0].table_id
-					request_dict['message']="The table ID for the club is "+thisclub[0].table_id
+					request_dict['message']="The table ID for the club is "+ str(thisclub[0].table_id)
 				elif thisclub[0].category!=club_category:
 					print "The club you are searching is not in the given category. Please check!"
 			else:
