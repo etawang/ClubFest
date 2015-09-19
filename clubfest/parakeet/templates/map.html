@@ -3,6 +3,14 @@
   <title> Clubfest App</title>
 </head>
 <body>
+<h1>Search Clubs</h1>
+{% if highlighted_club %}
+  <form action="/{{highlighted_club}}" method="get">
+     {% csrf_token %}
+     {{form2}}
+     <input type="submit" value="Search">
+  </form>
+{% endif %}
 <h1>Map</h1>
 {% if map %}
 

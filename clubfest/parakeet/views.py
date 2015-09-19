@@ -27,6 +27,10 @@ def upload(request):
 class ChangeClubForm(forms.Form):
   club_id = forms.IntegerField(label="Club ID:")
 
+class SearchClubForm(forms.Form):
+  club_name = forms.CharField(label="Club Name:")
+  club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category")
+
 def index(request, table_id=None):
   try:
       map_obj = Map.objects.get(id=1)
@@ -61,5 +65,27 @@ def index(request, table_id=None):
     else:
       form = ChangeClubForm()
     request_dict['form'] = form
+
+    if request.method == 'GET':
+      form2 = SearchClubForm(request.GET)
+        if form2.is_valid():
+          club_name=form2.cleaned_data['club_name']
+          club_category =form2.cleaned_data['club_category']
+          if club_name !="":
+              thisclub=Club.objects.filter(club_name=club_name)
+              if thisclub:
+            if thisclub[0] && thisclub[0].category==club_category:
+                request_dict['highlighted_club']=thisclub[0].table_id
+            else:
+                print "The club you are searching is not in the given category. Please check!"
+              elif:
+            print "This club cannot be found."
+          else:
+              clubs=Club.objects.filter(club_category=club_category[0])
+              if clubs:
+            for eachclub in clubs:
+                print eachclub.club_name
+                this_tableid=eachclub.table_id 
+          request_dict['form2']=form2
   context = RequestContext(request, request_dict)
   return HttpResponse(template.render(context))
