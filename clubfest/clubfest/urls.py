@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^upload/', 'parakeet.views.upload'),
     url(r'^([0-9]+)$', 'parakeet.views.index'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^mapgen/$', 'parakeet.views.mapgen'),
+    url(r'^mapgen/(?P<row>[0-9]+)_(?P<col>[0-9]+)$', 'parakeet.views.mapgen'),
 ]

@@ -102,3 +102,37 @@ def index(request, table_id=None):
 		request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))
+    if request.method == 'POST':
+      form = ChangeClubForm(request.POST)
+      if form.is_valid():
+        data = form.cleaned_data
+        print data
+        if clubs:
+          club = clubs[0]
+          club.table_id = -1
+          club.save(update_fields=['table_id'])
+        clubs = Club.objects.filter(pk=data['club_id'])
+        if clubs[0]:
+          club = clubs[0]
+          club.table_id = table_id
+          club.save(update_fields=['table_id'])
+          request_dict['club'] = clubs[0]
+          request_dict['message'] = 'Sucessfully changed club'
+    else:
+      form = ChangeClubForm()
+    request_dict['form'] = form
+  context = RequestContext(request, request_dict)
+  return HttpResponse(template.render(context))
+
+def mapgen(request, row=None, col=None):
+    map_obj = Map.objects.get(id=1)
+    if row and col:
+        r = int(row)
+        c = int(col)
+        map_obj.tables[r][c] = map_obj.num_tables
+        map_obj.num_tables += 1
+        map_obj.save()
+    template = loader.get_template('mapgen.html')
+    context = RequestContext(request, {'map': map_obj})
+    print map_obj.tables
+    return HttpResponse(template.render(context))
