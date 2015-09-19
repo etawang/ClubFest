@@ -27,7 +27,6 @@ def upload(request):
 class ChangeClubForm(forms.Form):
   club_id = forms.IntegerField(label="Club ID:")
 
-# Create your views here.
 def index(request, table_id=None):
   try:
       map_obj = Map.objects.get(id=1)
