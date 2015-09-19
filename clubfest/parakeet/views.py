@@ -28,8 +28,8 @@ class ChangeClubForm(forms.Form):
 	club_id = forms.IntegerField(label="Club ID:")
 
 class SearchClubForm(forms.Form):
-	club_name = forms.CharField(label="Club Name:")
-	club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category")
+	club_name = forms.CharField(label="Club Name:", required=False)
+	club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category", required=False)
 
 def index(request, table_id=None):
 	try:
@@ -70,7 +70,7 @@ def index(request, table_id=None):
 	 	form2 = SearchClubForm(request.GET)
 		if form2.is_valid():
 		  	club_name=form2.cleaned_data['club_name']
-		  	club_category =form2.cleaned_data['club_category']
+		  	club_categ3ory =form2.cleaned_data['club_category']
 		  	if club_name !="":
 				thisclub=Club.objects.filter(club_name=club_name)
 			  	if thisclub:
