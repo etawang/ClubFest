@@ -3,12 +3,6 @@
   <title> Clubfest App</title>
 </head>
 <body>
-<h1>Search Clubs</h1>
-<form action="/{{highlighted_club}}" method="get">
-    {% csrf_token %}
-    {{form2}}
-    <input type="submit" value="Search">
-</form>
 <h2>Search Clubs</h2>
 <form action="/{{highlighted_club}}" method="get">
   {% csrf_token %}
