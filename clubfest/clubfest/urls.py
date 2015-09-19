@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'parakeet.views.index'),
+    url(r'^([0-9]+)$', 'parakeet.views.index'),
     url(r'^admin/', include(admin.site.urls)),
 ]

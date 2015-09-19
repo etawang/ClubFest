@@ -9,9 +9,19 @@
     {% for table_row in map.tables %}
       <tr>
         {% for table in table_row %}
-          <td>
-            {{ table }}
-          </td>
+          {% ifequal table selected_table %}
+            <td id="{{ table }}" class="selected">
+                <b>{{ table }}</b>
+            </td>
+          {% else %}
+            <td id="{{ table }}">
+              {% if table %}
+              <a href="{{ table }}">{{ table }}</a>
+              {% else %}
+                _
+              {% endif %}
+            </td>
+          {% endifequal %}
         {% endfor %}
       </tr>
     {% endfor %}
