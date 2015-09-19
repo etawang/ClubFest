@@ -70,13 +70,14 @@ def index(request, table_id=None):
 	if form2.is_valid():
 	  	club_name=form2.cleaned_data['club_name']
 	  	club_category =form2.cleaned_data['club_category']
-	  	print club_name
+	  	print club_name+" "+club_category #comment out afterwards
 	  	if club_name !="":
 			thisclub=Club.objects.filter(club_name=club_name)
 		  	if thisclub:
-				if club_category=="" || club_category=Choose:
+				if club_category=="Choose":
+					print thisclub[0].table_id
 					request_dict['highlighted_club']=thisclub[0].table_id
-				elif thisclub[0].category==club_category:
+				elif thisclub[0].category!=club_category:
 					print "The club you are searching is not in the given category. Please check!"
 			else:
 				print "This club cannot be found."
