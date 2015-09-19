@@ -84,7 +84,7 @@ def index(request, table_id=None):
 			if searchclubs:
 				for eachclub in searchclubs:
 					print eachclub.club_name
-						this_tableid=eachclub.table_id 
+					this_tableid=eachclub.table_id 
 	request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))
