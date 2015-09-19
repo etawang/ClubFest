@@ -1,5 +1,7 @@
 from django import forms
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader
 
@@ -9,6 +11,21 @@ from data_parser import load_clubs
 class UploadForm(forms.Form):
 	file = forms.FileField()
 
+def admin_login(request):
+  logout(request)
+  username = password = ''
+  if request.POST:
+    username = request.POST['username']
+    password = request.POST['password']
+
+    user = authenticate(username=username, password=password)
+    if user is not None:
+      if user.is_active:
+        login(request, user)
+        return HttpResponseRedirect('/')
+  return render_to_response('login.html', context_instance=RequestContext(request))
+
+@login_required(login_url='login/')
 def upload(request):
 	if request.method == 'POST':
 		form = UploadForm(request.POST, request.FILES)
@@ -103,6 +120,7 @@ def index(request, table_id=None):
     context = RequestContext(request, request_dict)
     return HttpResponse(template.render(context))
 
+@login_required(login_url='login/')
 def mapgen(request, row=None, col=None):
     map_obj = Map.objects.get(id=1)
     if row and col:

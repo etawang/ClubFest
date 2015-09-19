@@ -14,6 +14,14 @@
      <input type="submit" value="Search">
   </form>
 {% endif %}
+{% if not user.is_superuser %}
+  <a class="btn" href="/login">Sign in as Admin</a>
+{% endif %}
+{% if user.is_superuser %}
+  <label>Admin Tools</label>
+  <a href="/mapgen">Add Tables</a>
+  <a href="/upload">Upload CSV</a>
+{% endif %}
 <h1 class="exit1">Statler Exit</h1>
 <p class="p1">Performance Area</p>
 {% if map %}
@@ -45,7 +53,7 @@
       <p>{{ club.category }}</p>
     </div>
   {% endif %}
-  {% if selected_table %}
+  {% if selected_table and user.is_superuser %}
     <form id='club-id-form' action="/{{ selected_table }}" method="post">
       {% csrf_token %}
       {{ form }}
