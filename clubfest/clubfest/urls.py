@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'$', 'parakeet.views.index'),
+    url(r'^$', 'parakeet.views.index'),
     url(r'^upload/', 'parakeet.views.upload'),
     url(r'^([0-9]+)$', 'parakeet.views.index'),
     url(r'^admin/', include(admin.site.urls)),
