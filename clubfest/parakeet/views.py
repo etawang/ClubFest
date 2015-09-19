@@ -69,7 +69,7 @@ def index(request, table_id=None):
  	form2 = SearchClubForm(request.GET)
 	if form2.is_valid():
 	  	club_name=form2.cleaned_data['club_name']
-	  	club_categ3ory =form2.cleaned_data['club_category']
+	  	club_category =form2.cleaned_data['club_category']
 	  	if club_name !="":
 			thisclub=Club.objects.filter(club_name=club_name)
 		  	if thisclub:
@@ -79,12 +79,12 @@ def index(request, table_id=None):
 					print "The club you are searching is not in the given category. Please check!"
 			else:
 				print "This club cannot be found."
-		else:
-			searchclubs=Club.objects.filter(club_category=club_category[0])
+		elif club_category!="":
+			searchclubs=Club.objects.filter(club_category=club_category)
 			if searchclubs:
 				for eachclub in searchclubs:
 					print eachclub.club_name
-					this_tableid=eachclub.table_id 
+						this_tableid=eachclub.table_id 
 	request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))
