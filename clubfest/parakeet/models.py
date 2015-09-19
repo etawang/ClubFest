@@ -4,8 +4,19 @@ from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 class Club(models.Model):
+    club_name = models.CharField(max_length=256)
     table_id = models.IntegerField()
-    category = models.CharField(max_length=256)
+    OTHER='othr'
+    SPORTS="sprt"
+    BUSINESS="buzz"
+    ARTS="arts"
+    CATEGORY_CHOICES=(
+        (SPORTS, 'sprt'),
+        (BUSINESS, 'buz'),
+        (ARTS,'art'),
+        (OTHER, 'othr'),
+    )
+    category = models.CharField(max_length=4, choices=CATEGORY_CHOICES, default=OTHER)
 
 class Table(models.Model):
     x = models.IntegerField()
