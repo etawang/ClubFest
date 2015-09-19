@@ -81,9 +81,9 @@ def index(request, table_id=None):
 				else:
 					print "This club cannot be found."
 			else:
-				clubs=Club.objects.filter(club_category=club_category[0])
-				if clubs:
-					for eachclub in clubs:
+				searchclubs=Club.objects.filter(club_category=club_category[0])
+				if searchclubs:
+					for eachclub in searchclubs:
 						print eachclub.club_name
 						this_tableid=eachclub.table_id 
 		request_dict['form2']=form2
