@@ -64,7 +64,7 @@ def index(request, table_id=None):
 				  	request_dict['message'] = 'Sucessfully changed club'
 			else:
 		  		form = ChangeClubForm()
-		request_dict['form'] = form
+			request_dict['form'] = form
 
  	form2 = SearchClubForm(request.POST)
 	if form2.is_valid():
