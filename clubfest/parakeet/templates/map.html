@@ -4,7 +4,7 @@
 </head>
 <body>
 <h2>Search Clubs</h2>
-<form action="/{{highlighted_club}}" method="get">
+<form action="/{{highlighted_club}}" method="post">
   {% csrf_token %}
   {{form2}}
   <input type="submit" value="Search">
