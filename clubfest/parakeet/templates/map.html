@@ -5,21 +5,29 @@
   <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
 </head>
 <body>
+<h1>Search Clubs</h1>
+{% if highlighted_club %}
+  <form action="/{{highlighted_club}}" method="get">
+     {% csrf_token %}
+     {{form2}}
+     <input type="submit" value="Search">
+  </form>
+{% endif %}
 <h1>Clubfest Map</h1>
 <p class="p1">Performance Area</p>
 {% if map %}
   <table class="table">
-    {% for table_row in map.tables %}
+    {% for table_row in map %}
       <tr>
         {% for table in table_row %}
-          {% if table == selected_table %}
-            <td id="table-{{ table }}" class="selected">
-                <p class="highlight"><b>{{ table }}</b></p>
+          {% if table.0 == selected_table %}
+            <td id="table-{{ table.0 }}" class="selected {{ table.1 }}">
+                <p class="highlight"><b>{{ table.0 }}</b></p>
             </td>
           {% else %}
-            <td id="table-{{ table }}">
-              {% if table %}
-              <p class="clickable"> <a href="{{ table }}">{{ table }}</a></p>
+            <td id="table-{{ table.0 }}" class="{{ table.1 }}">
+              {% if table.0 %}
+              <p class="clickable"> <a href="{{ table.0 }}">{{ table.0 }}</a></p>
               {% else %}
                 <p class="noid">_</p>
               {% endif %}
