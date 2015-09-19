@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'parakeet',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,6 +68,10 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_DIRS = (
+  './parakeet/templates/',
+)
 
 WSGI_APPLICATION = 'clubfest.wsgi.application'
 
