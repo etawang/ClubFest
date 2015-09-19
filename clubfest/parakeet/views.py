@@ -74,9 +74,9 @@ def index(request, table_id=None):
 		  	if club_name !="":
 				thisclub=Club.objects.filter(club_name=club_name)
 			  	if thisclub:
-					if thisclub[0] && thisclub[0].category==club_category:
+					if club_category=="":
 						request_dict['highlighted_club']=thisclub[0].table_id
-					else:
+					elif thisclub[0].category==club_category:
 						print "The club you are searching is not in the given category. Please check!"
 				else:
 					print "This club cannot be found."
