@@ -55,16 +55,16 @@ def index(request, table_id=None):
 				club = clubs[0]
 			  	club.table_id = -1
 			  	club.save(update_fields=['table_id'])
-				clubs = Club.objects.filter(pk=data['club_id'])
-				if clubs[0]:
-				  	club = clubs[0]
-				  	club.table_id = table_id
-				  	club.save(update_fields=['table_id'])
-				  	request_dict['club'] = clubs[0]
-				  	request_dict['message'] = 'Sucessfully changed club'
-			else:
-		  		form = ChangeClubForm()
-			request_dict['form'] = form
+			clubs = Club.objects.filter(pk=data['club_id'])
+			if clubs[0]:
+			  	club = clubs[0]
+			  	club.table_id = table_id
+			  	club.save(update_fields=['table_id'])
+			  	request_dict['club'] = clubs[0]
+			  	request_dict['message'] = 'Sucessfully changed club'
+		else:
+	  		form = ChangeClubForm()
+		request_dict['form'] = form
 
  	form2 = SearchClubForm(request.POST)
 	if form2.is_valid():
@@ -72,6 +72,7 @@ def index(request, table_id=None):
 	  	club_category =form2.cleaned_data['club_category']
 	  	print club_name+" "+club_category #comment out afterwards
 	  	if club_name !="":
+	  		#make sure upper and lower case all work
 			thisclub=Club.objects.filter(club_name=club_name)
 		  	if thisclub:
 				if club_category=="Choose" or club_category==thisclub[0].category:
