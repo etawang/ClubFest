@@ -29,17 +29,16 @@ def index(request, table_id=None):
         data = form.cleaned_data
         print data
         if clubs:
-          clubs[0].table_id = -1
-          clubs[0].save()
+          club = clubs[0]
+          club.table_id = -1
+          club.save(update_fields=['table_id'])
         clubs = Club.objects.filter(pk=data['club_id'])
         if clubs[0]:
-          print clubs[0].club_name
-          print "Selected table: " + str(table_id)
-          clubs[0].table_id = table_id
-          clubs[0].save()
-          print "After save: " + str(clubs[0].table_id)
+          club = clubs[0]
+          club.table_id = table_id
+          club.save(update_fields=['table_id'])
           request_dict['club'] = clubs[0]
-        request_dict['message'] = 'Sucessfully changed club'
+          request_dict['message'] = 'Sucessfully changed club'
     else:
       form = ChangeClubForm()
     request_dict['form'] = form

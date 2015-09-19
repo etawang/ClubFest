@@ -1,0 +1,20 @@
+[
+  {
+    "model": "parakeet.Club",
+    "pk": 1,
+    "fields": {
+      "club_name": "Badminton Club",
+      "table_id": 1,
+      "category": "sprt"
+    }
+  },
+  {
+    "model": "parakeet.Club",
+    "pk": 2,
+    "fields": {
+      "club_name": "Yamatai",
+      "table_id": 4,
+      "category": "arts"
+    }
+  }
+]
