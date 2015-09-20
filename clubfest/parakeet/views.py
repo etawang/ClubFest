@@ -98,6 +98,8 @@ def index(request, table_id=None):
                 request_dict['selected']=selected
                 print clubnames
                 request_dict['message_1']="The clubs to be checked out are highlighted: "+clubnames
+        else:
+            request_dict['message_1']="Need either club name or category to perform search!"
     request_dict['form2']=form2
 
     if table_id:
