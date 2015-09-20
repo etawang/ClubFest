@@ -152,5 +152,16 @@ def mapgen(request, row=None, col=None):
         map_obj.save()
     template = loader.get_template('mapgen.html')
     context = RequestContext(request, {'map': map_obj})
-    print map_obj.tables
+    return HttpResponse(template.render(context))
+
+def clubindex(request):
+    club_list = []
+    for club in Club.objects.all():
+        if club.table_id != -1:
+            club_list.append((club.table_id, club.club_name))
+        else:
+            club_list.append((0, club.club_name))
+    club_list.sort(key=lambda x: x[1])
+    template = loader.get_template('club_index.html')
+    context = RequestContext(request, {'club_list': club_list})
     return HttpResponse(template.render(context))

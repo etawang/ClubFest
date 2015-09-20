@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^mapgen/$', 'parakeet.views.mapgen'),
     url(r'^mapgen/(?P<row>[0-9]+)_(?P<col>[0-9]+)$', 'parakeet.views.mapgen'),
-    url(r'^login/', 'parakeet.views.admin_login')
+    url(r'^login/', 'parakeet.views.admin_login'),
+    url(r'^club_index/', 'parakeet.views.clubindex')
 ]
