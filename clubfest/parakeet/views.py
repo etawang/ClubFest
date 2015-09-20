@@ -98,7 +98,7 @@ def index(request, table_id=None):
                 request_dict['selected']=selected
                 print clubnames
                 request_dict['message_1']="The clubs to be checked out are highlighted: "+clubnames
-        else:
+        elif request.method == 'POST' and 'club_search_form' in request.POST and club_category == "epty":
             request_dict['message_1']="Need either club name or category to perform search!"
     request_dict['form2']=form2
 
