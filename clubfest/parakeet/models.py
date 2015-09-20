@@ -7,10 +7,17 @@ class Club(models.Model):
     club_name = models.CharField(max_length=256, default='NoName')
     table_id = models.IntegerField()
     CATEGORY_CHOICES=(
-        ('spts', "Sports"),
-        ('buzz', "Business"),
+        ('evnt', "Event Planning/Publications"),
+        ('sprt', "Recreational Sports"),
+        ('spcl', "Special Interest"),
+        ('comm', "Community Service"),
+        ('buzz', "Business/Career"),
+        ('rlgn', "Religion"),
+        ('cult', "Cultural"),
         ('arts',"Performing Arts"),
-        ('othr', "Other"),
+        ('chng', "Social Change"),
+        ('sci', "Science/Technology"),
+        ('othr', "Other")
     )
     category = models.CharField(max_length=4, choices=CATEGORY_CHOICES, default="othr")
 

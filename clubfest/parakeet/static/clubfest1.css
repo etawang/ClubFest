@@ -103,17 +103,38 @@ p{
     padding: 5%;
     font-family: Raleway;
 }
+.evnt{
+  background-color: #cc8379;
+}
 .sprt{
   background-color: #ffb05a;
+}
+.spcl{
+  background-color: #998f73;
+}
+.comm{
+  background-color: #9ecc8e;
 }
 .buzz{
   background-color: #86ecff;
 }
+.rlgn{
+  background-color: #f5a6da;
+}
+.rlgn{
+  background-color: #784c99;
+}
 .arts{
   background-color:  #f2f679;
 }
+.chng{
+  background-color: #0f6f9a;
+}
+.sci{
+  background-color: #41993e;
+}
 .othr{
-  background-color:  #0f6f9a;
+  background-color:  #41776f;
 }
 .unassigned{
   background-color: #d2d4d6;

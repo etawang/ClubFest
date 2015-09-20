@@ -61,7 +61,7 @@ def full_map_for_map(map_obj):
     for table in table_row:
       clubs = Club.objects.filter(table_id=table)
       if clubs:
-        map_row.append((table, clubs[0].category))
+        map_row.append((table, clubs[0].get_category_display()))
       elif table:
         map_row.append((table, 'unassigned'))
       else:
