@@ -39,7 +39,6 @@ def index(request, table_id=None):
   	template = loader.get_template('map.html')
   	request_dict = {}
   	request_dict['map'] = map_obj
-  	print Club.CATEGORY_CHOICES
   	if table_id:
 		table_id = int(table_id)
 		clubs = Club.objects.filter(table_id=table_id)
@@ -81,15 +80,21 @@ def index(request, table_id=None):
 					request_dict['highlighted_club']=thisclub[0].table_id
 					request_dict['message']="The table ID for the club is "+ str(thisclub[0].table_id)
 				elif thisclub[0].category!=club_category:
-					print "The club you are searching is not in the given category. Please check!"
+					request_dict['message']="The club you are searching is not in the given category. Please check!"
 			else:
-				print "This club cannot be found."
+				request_dict['message']="This club cannot be found."
 		elif club_category!="":
 			searchclubs=Club.objects.filter(category=club_category)
 			if searchclubs:
+				selected=[]
+				clubnames=""
 				for eachclub in searchclubs:
-					print eachclub.club_name
-					this_tableid=eachclub.table_id 
+					clubnames+=eachclub.club_name+" "
+					this_tableid=eachclub.table_id
+					selected.append(this_tableid)
+				request_dict['selected']=selected
+				print clubnames
+				request_dict['message']="The clubs to be checked out are highlighted-- "+clubnames
 	request_dict['form2']=form2
   	context = RequestContext(request, request_dict)
   	return HttpResponse(template.render(context))

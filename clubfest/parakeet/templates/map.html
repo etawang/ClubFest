@@ -9,6 +9,9 @@
   {{form2}}
   <input type="submit" value="Search">
 </form>
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
 <h1>Map</h1>
 {% if map %}
 
@@ -16,7 +19,7 @@
     {% for table_row in map.tables %}
       <tr>
         {% for table in table_row %}
-          {% if table == selected_table %}
+          {% if table == selected_table or table in selected %}
             <td id="{{ table }}" class="selected">
                 <b>{{ table }}</b>
             </td>
