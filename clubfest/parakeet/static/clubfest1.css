@@ -1,6 +1,3 @@
-/* #table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8, #table-9{
-	background-color: #ffb05a;
-} */
 .clickable{
 	color: red;
 }
@@ -95,18 +92,39 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
-#class-descr{
-	text-align: center;
-}
+
 #club-id-form{
 	text-align: center;
 }
 p{
   font-family: Raleway;
 }
+.links{
+  display: inline-block;
+  float: left;
+}
 .admin{
-  text-align: right;
-	margin-right: -20%;
+  display: inline-block;
+  float: right;
+}
+.btn{
+	font-family: Raleway;
+	border: none;
+	background: #ffb05a;
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+	text-decoration: none;
+}
+.btn:hover{
+	font-family: Raleway;
+	background: rgba(0,0,0,0);
+	color: black;
+	box-shadow: inset 0 0 0 3px #ffb05a;
 }
 .add{
 	font-family: Raleway;
@@ -183,6 +201,22 @@ label{
 }
 .form1{
 	margin-left: 6%;
+}
+.msg{
+	    margin-top: -7%;
+    font-size: 270%;
+    background-color: #cecece;
+    border-radius: 5px;
+    padding: 5px;
+}
+.msg1{
+	   margin-top: -35%;
+    font-size: 150%;
+    margin-left: 120%;
+    width: 150%;
+}
+#class-descr{
+	float: right;
 }
 .evnt{
   background-color: #cc8379;

@@ -1,6 +1,9 @@
 <html>
 <head>
   <title>Clubfest App</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
 </head>
 <body>
   <h1>Index of Clubs</h1>
@@ -9,7 +12,7 @@
   <a href="#{{ a }}">{{ a }}</a> 
   {% endfor %}
   </p>
-  <a href="/">Home</a>
+  <a href="/" class="btn">Home</a>
     {% for club_list in club_index %}
       {% if club_list.0 %}
       <a name="{{ club_list.0 }}">{{ club_list.0 }}</a>
