@@ -1,21 +1,26 @@
 <html>
 <head>
   <title>Clubfest App</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
 </head>
 <body>
   <h1>Map Builder</h1>
   {% if map %}
-    <table>
+    <table class="table">
       {% for table_row in map.tables %}
         <tr>
           {% for table in table_row %}
-            <td id="{{ table }}">
-              {% if table %}
+            {% if table %}
+              <td id="{{ table }}" class="unassigned">
                 X
-              {% else %}
-              <a href="/mapgen/{{ forloop.parentloop.counter0 }}_{{ forloop.counter0 }}">_</a>
-              {% endif %}
-            </td>
+              </td>
+            {% else %}
+              <td id="{{ table }}">
+                <a href="/mapgen/{{ forloop.parentloop.counter0 }}_{{ forloop.counter0 }}">_</a>
+              </td>
+            {% endif %}
           {% endfor %}
         </tr>
       {% endfor %}
