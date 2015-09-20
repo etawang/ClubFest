@@ -14,6 +14,8 @@
      <input type="submit" value="Search">
   </form>
 {% endif %}
+<h2 class="exit1">Statler Exit</h2>
+<h2 class="entrance1">Teagle Entrance</h2>
 {% if not user.is_superuser %}
   <a class="btn" href="/login">Sign in as Admin</a>
 {% endif %}
@@ -22,7 +24,6 @@
   <a href="/mapgen">Add Tables</a>
   <a href="/upload">Upload CSV</a>
 {% endif %}
-<h1 class="exit1">Statler Exit</h1>
 <p class="p1">Performance Area</p>
 {% if map %}
   <table class="table">
