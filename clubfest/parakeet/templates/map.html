@@ -67,7 +67,7 @@ Business/ Career<br>
         {% for table in table_row %}
           {% if table.0 == selected_table or table.0 in selected %}
             <td id="table-{{ table.0 }}" class="selected {{ table.1 }}">
-                <p class="highlight"><b>X</b></p>
+                <p class="highlight"><b>O</b></p>
             </td>
           {% else %}
             <td id="table-{{ table.0 }}" class="{{ table.1 }}">
