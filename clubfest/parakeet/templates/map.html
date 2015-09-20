@@ -3,6 +3,7 @@
   <title> Clubfest App</title>
   {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
 </head>
 <body>
 <h1>Clubfest Map</h1>
@@ -32,12 +33,12 @@
         {% for table in table_row %}
           {% if table.0 == selected_table %}
             <td id="table-{{ table.0 }}" class="selected {{ table.1 }}">
-                <p class="highlight"><b>{{ table.0 }}</b></p>
+                <p class="highlight"><b>X</b></p>
             </td>
           {% else %}
             <td id="table-{{ table.0 }}" class="{{ table.1 }}">
               {% if table.0 %}
-              <p class="clickable"> <a href="{{ table.0 }}">{{ table.0 }}</a></p>
+              <p class="clickable"> <a href="{{ table.0 }}">X</a></p>
               {% else %}
                 <p class="noid">_</p>
               {% endif %}
