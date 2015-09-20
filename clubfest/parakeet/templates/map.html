@@ -6,46 +6,53 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
 </head>
 <body>
-<h1>Clubfest Map</h1>
-<h1>Search Clubs</h1>
-{% if highlighted_club %}
-  <form action="/{{highlighted_club}}" method="get">
-     {% csrf_token %}
-     {{form2}}
-     <input type="submit" value="Search">
-  </form>
+<h2>Search Clubs</h2>
+<form action="/{{highlighted_club}}" method="post">
+  {% csrf_token %}
+  {{form2}}
+  <input type="submit" name="club_search_form" value="Search">
+</form>
+{% if message_1 %}
+  <p>{{ message_1 }}</p>
 {% endif %}
 <h2 class="exit1">Statler Exit</h2>
 <h2 class="entrance1">Teagle Entrance</h2>
-<p class="catg"></p>
-{% if not user.is_superuser %}
-  <a class="btn" href="/login">Sign in as Admin</a>
-{% endif %}
-{% if user.is_superuser %}
-  <label>Admin Tools</label>
-  <a href="/mapgen">Add Tables</a>
-  <a href="/upload">Upload CSV</a>
-{% endif %}
-<h3 id="catg1">Event Planning/ Publications - 16<br>
-Recreational Sports - 45<br>
-Special Interest - 43<br>
-Community Services - 41<br>
-Business/ Career - 35<br>
-</h3>
-<h3 id="catg2">
-  Religion - 12<br>
-  Cultural - 27<br>
-  Performing Arts - 37<br>
-  Social Change - 30<br>
-  Science/ Technology<br>
-</h3>
+<div id="navbar">
+  <div class="admin">
+    {% if not user.is_superuser %}
+      <a class="btn" href="/login">Sign in as Admin</a>
+    {% else %}
+      <label>Admin Tools</label>
+      <a class="add" href="/mapgen">Add Tables</a>
+      <a class="upload" href="/upload">Upload CSV</a>
+    {% endif %}
+  </div>
+</div>
+<div>
+  <h3 id="catg1">
+    Event Planning/ Publications - 16<br>
+    Recreational Sports - 45<br>
+    Special Interest - 43<br>
+    Community Services - 41<br>
+    Business/ Career - 35<br>
+  </h3>
+</div>
+<div>
+  <h3 id="catg2">
+    Religion - 12<br>
+    Cultural - 27<br>
+    Performing Arts - 37<br>
+    Social Change - 30<br>
+    Science/ Technology<br>
+  </h3>
+</div>
 <p class="p1">Performance Area</p>
 {% if map %}
   <table class="table">
     {% for table_row in map %}
       <tr>
         {% for table in table_row %}
-          {% if table.0 == selected_table %}
+          {% if table.0 == selected_table or table.0 in selected %}
             <td id="table-{{ table.0 }}" class="selected {{ table.1 }}">
                 <p class="highlight"><b>X</b></p>
             </td>
@@ -73,7 +80,7 @@ Business/ Career - 35<br>
     <form id='club-id-form' action="/{{ selected_table }}" method="post">
       {% csrf_token %}
       {{ form }}
-      <input type="submit" value="Save">
+      <input type="submit" name="club_table_form" value="Save">
     </form>
     {% if message %}
       <p>{{ message }}</p>

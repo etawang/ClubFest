@@ -1,4 +1,19 @@
-.highlight{
+.sprt{
+  background-color: #ffb05a;
+}
+.buzz{
+  background-color: #86ecff;
+}
+.arts{
+  background-color:  #f2f679;
+}
+.othr{
+  background-color:  #0f6f9a;
+}
+.unassigned{
+  background-color: #d2d4d6;
+}
+.selected{
 	background-color:#f26c63;
 	color:black;
 }
@@ -8,11 +23,17 @@
 .clickable{
 	color: red;
 }
-
+td a {
+  color: black;
+  text-decoration: none;
+}
 td {
 	height: 5%;
 	width: 5%;
   padding: 0.25em 0.5em;
+}
+#navbar{
+  padding-bottom: 1%;
 }
 .table{
      background-color: #34495e;
@@ -28,6 +49,9 @@ h1{
 h2{
   font-family: Raleway;
 }
+body {
+	font-family: Raleway;
+}
 .p1{
 	font-family: Raleway;
     background-color: #34495e;
@@ -35,13 +59,13 @@ h2{
     color: white;
     margin: auto;
     width: 30%;
-    margin-top: 12%;
+    margin-top: 15%;
     font-size: 125%;
 }
 .exit1{
 	font-family: Raleway;
 	float: left;
-	margin-top: 10%;
+	margin-top: 20%;
 	padding: 1%;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
@@ -62,7 +86,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .entrance1{
 	font-family: Raleway;
 	float: right;
-	margin-top: 10%;
+	margin-top: 20%;
 	padding: 1%;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
@@ -88,6 +112,51 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 p{
   font-family: Raleway;
+}
+.admin{
+  text-align: right;
+	margin-right: -20%;
+}
+.add{
+	font-family: Raleway;
+	border: none;
+	background: #ffb05a;
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+	text-decoration: none;
+}
+.add:hover{
+	font-family: Raleway;
+	background: rgba(0,0,0,0);
+	color: black;
+	box-shadow: inset 0 0 0 3px #ffb05a;
+}
+.upload{
+	font-family: Raleway;
+	border: none;
+	background: #ffb05a;
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+	text-decoration: none;
+}
+.upload:hover{
+	font-family: Raleway;
+	background: rgba(0,0,0,0);
+	color: black;
+	box-shadow: inset 0 0 0 3px #ffb05a;
+}
+label{
+	font-family: Raleway;
 }
 #catg1{
 	margin-top: -4%;
