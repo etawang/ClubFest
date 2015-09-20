@@ -48,6 +48,9 @@ h1{
 }
 h2{
   font-family: Raleway;
+  text-align: center;
+  background-color: #f26c63;
+  height: 20%;
 }
 body {
 	font-family: Raleway;
@@ -59,14 +62,15 @@ body {
     color: white;
     margin: auto;
     width: 30%;
-    margin-top: 15%;
-    font-size: 125%;
+    margin-top: 20%;
+    font-size: 185%;
 }
 .exit1{
 	font-family: Raleway;
-	float: left;
-	margin-top: 20%;
-	padding: 1%;
+    margin-left: -1%;
+    float: left;
+    margin-top: 40%;
+    padding-left: 1%;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
 
@@ -85,9 +89,11 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 .entrance1{
 	font-family: Raleway;
-	float: right;
-	margin-top: 20%;
-	padding: 1%;
+    float: right;
+    margin-right: -1%;
+    margin-top: 40%;
+    padding: 1%;
+
 	/* Safari */
 -webkit-transform: rotate(-90deg);
 
@@ -165,7 +171,7 @@ p{
 .pic2{
 	margin-top: 2.5%;
     margin-left: -39%;
-    margin-right: 10%;
+    margin-right: 24%;
     float: right;
     width: 2.5%;
 }
@@ -180,7 +186,7 @@ label{
     font-family: Raleway;
 }
 #catg2{
-	margin-top: -4%;
+	margin-top: -2.5%;
     float: right;
     margin-right: 5%;
     padding: 5%;
