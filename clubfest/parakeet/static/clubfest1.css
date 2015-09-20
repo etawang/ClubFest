@@ -23,7 +23,7 @@
 .clickable{
 	color: red;
 }
-a {
+td a {
   color: black;
   text-decoration: none;
 }
@@ -31,6 +31,9 @@ td {
 	height: 5%;
 	width: 5%;
   padding: 0.25em 0.5em;
+}
+#navbar{
+  padding-bottom: 1%;
 }
 .table{
      background-color: #34495e;
@@ -62,7 +65,7 @@ body {
 .exit1{
 	font-family: Raleway;
 	float: left;
-	margin-top: 10%;
+	margin-top: 20%;
 	padding: 1%;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
@@ -83,7 +86,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .entrance1{
 	font-family: Raleway;
 	float: right;
-	margin-top: 10%;
+	margin-top: 20%;
 	padding: 1%;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
@@ -111,8 +114,8 @@ p{
   font-family: Raleway;
 }
 .admin{
-	float: right;
-	margin-right: -10%;
+  text-align: right;
+	margin-right: -20%;
 }
 .add{
 	font-family: Raleway;

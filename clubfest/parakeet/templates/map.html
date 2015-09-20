@@ -17,30 +17,35 @@
 {% endif %}
 <h2 class="exit1">Statler Exit</h2>
 <h2 class="entrance1">Teagle Entrance</h2>
-<p class="catg"></p>
-{% if not user.is_superuser %}
-  <a class="btn" href="/login">Sign in as Admin</a>
-{% endif %}
-{% if user.is_superuser %}
-<div class="admin">
-  <label>Admin Tools</label>
-  <a class="add" href="/mapgen">Add Tables</a>
-  <a class="upload" href="/upload">Upload CSV</a>
+<div id="navbar">
+  <div class="admin">
+    {% if not user.is_superuser %}
+      <a class="btn" href="/login">Sign in as Admin</a>
+    {% else %}
+      <label>Admin Tools</label>
+      <a class="add" href="/mapgen">Add Tables</a>
+      <a class="upload" href="/upload">Upload CSV</a>
+    {% endif %}
   </div>
-{% endif %}
-<h3 id="catg1">Event Planning/ Publications - 16<br>
-Recreational Sports - 45<br>
-Special Interest - 43<br>
-Community Services - 41<br>
-Business/ Career - 35<br>
-</h3>
-<h3 id="catg2">
-  Religion - 12<br>
-  Cultural - 27<br>
-  Performing Arts - 37<br>
-  Social Change - 30<br>
-  Science/ Technology<br>
-</h3>
+</div>
+<div>
+  <h3 id="catg1">
+    Event Planning/ Publications - 16<br>
+    Recreational Sports - 45<br>
+    Special Interest - 43<br>
+    Community Services - 41<br>
+    Business/ Career - 35<br>
+  </h3>
+</div>
+<div>
+  <h3 id="catg2">
+    Religion - 12<br>
+    Cultural - 27<br>
+    Performing Arts - 37<br>
+    Social Change - 30<br>
+    Science/ Technology<br>
+  </h3>
+</div>
 <p class="p1">Performance Area</p>
 {% if map %}
   <table class="table">
