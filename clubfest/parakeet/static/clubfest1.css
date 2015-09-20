@@ -131,11 +131,25 @@ p{
 	color: black;
 	box-shadow: inset 0 0 0 3px #ffb05a;
 }
+.pic1{
+	margin-top: 2.5%;
+    margin-right: -29%;
+    margin-left: 7%;
+    float: left;
+    width: 2.5%;
+}
+.pic2{
+	margin-top: 2.5%;
+    margin-left: -39%;
+    margin-right: 10%;
+    float: right;
+    width: 2.5%;
+}
 label{
 	font-family: Raleway;
 }
 #catg1{
-	margin-top: -4%;
+	margin-top: -2.5%;
     float: left;
     margin-left: 5%;
     padding: 5%;
