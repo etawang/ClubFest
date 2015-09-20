@@ -16,14 +16,14 @@
       "table_id": 2,
       "category": "othr"
     }
-  }
+  },
   {
     "model": "parakeet.Club",
     "pk":3,
     "fields": {
       "club_name": "GCC",
       "table_id": 3,
-      "category": "Business"
+      "category": "buzz"
     }
   }
 ]
