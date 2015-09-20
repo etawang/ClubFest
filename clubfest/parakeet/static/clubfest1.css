@@ -95,6 +95,9 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 #club-id-form{
 	text-align: center;
+	margin-top: 10%;
+    margin-left: -40%;
+    
 }
 p{
   font-family: Raleway;
@@ -172,10 +175,9 @@ p{
     width: 2.5%;
 }
 .pic2{
-	margin-top: 2.5%;
-    margin-left: -39%;
+	margin-top: 1%;
+    margin-left: 1%;
     margin-right: 24%;
-    float: right;
     width: 2.5%;
 }
 label{
@@ -195,12 +197,12 @@ label{
     padding: 5%;
     font-family: Raleway;
 }
-#club-id-form{
-	float: left;
-	margin-top: －10%;
-}
+
 .form1{
 	margin-left: 6%;
+}
+.table1{
+	margin-top: -15%;
 }
 .msg{
 	text-align: center;
@@ -215,7 +217,7 @@ label{
 .msg1{
 	  margin-top: -15%;
     font-size: 120%;
-    margin-left: 160%;
+    margin-left: 170%;
     text-align: center;
     width: 150%;
 }
