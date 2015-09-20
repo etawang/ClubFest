@@ -39,6 +39,7 @@ def index(request, table_id=None):
   	template = loader.get_template('map.html')
   	request_dict = {}
   	request_dict['map'] = map_obj
+  	print Club.CATEGORY_CHOICES
   	if table_id:
 		table_id = int(table_id)
 		clubs = Club.objects.filter(table_id=table_id)
