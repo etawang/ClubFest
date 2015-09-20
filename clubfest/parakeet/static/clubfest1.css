@@ -189,9 +189,9 @@ label{
     font-family: Raleway;
 }
 #catg2{
-	margin-top: -2.5%;
+	margin-top: -19%;
     float: right;
-    margin-right: 5%;
+    margin-right: 21%;
     padding: 5%;
     font-family: Raleway;
 }
@@ -203,7 +203,8 @@ label{
 	margin-left: 6%;
 }
 .msg{
-	   width: 120%;
+	text-align: center;
+	width: 120%;
     margin-left: 45%;
     margin-top: -7%;
     font-size: 270%;
@@ -213,7 +214,7 @@ label{
 }
 .msg1{
 	  margin-top: -15%;
-    font-size: 150%;
+    font-size: 120%;
     margin-left: 160%;
     text-align: center;
     width: 150%;
