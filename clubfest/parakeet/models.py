@@ -28,6 +28,7 @@ class Map(models.Model):
             models.IntegerField()
         ),
     )
+    num_tables = models.IntegerField(default=0)
 
 class Event(models.Model):
     emap = models.ForeignKey(Map)

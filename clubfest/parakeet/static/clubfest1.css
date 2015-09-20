@@ -1,0 +1,82 @@
+.highlight{
+	background-color:#f26c63;
+	color:black;
+}
+#table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8, #table-9{
+	background-color: #ffb05a;
+}
+.clickable{
+	color: red;
+}
+
+td {
+	height: 5%;
+	width: 5%;
+}
+.table{
+ background-color: #34495e;
+}
+h1{
+	background-color: #f26c63;
+	text-align: center;
+  font-family: Raleway;
+}
+h2{
+  font-family: Raleway;
+}
+.p1{
+	background-color: #34495e;
+	text-align: center;
+	color: white;
+	margin: auto;
+	width: 10%;
+}
+.exit1{
+	float: left;
+	margin-top: 10%;
+	padding: 1%;
+	/* Safari */
+-webkit-transform: rotate(-90deg);
+
+/* Firefox */
+-moz-transform: rotate(-90deg);
+
+/* IE */
+-ms-transform: rotate(-90deg);
+
+/* Opera */
+-o-transform: rotate(-90deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
+.entrance1{
+	float: right;
+	margin-top: 10%;
+	padding: 1%;
+	/* Safari */
+-webkit-transform: rotate(-90deg);
+
+/* Firefox */
+-moz-transform: rotate(-90deg);
+
+/* IE */
+-ms-transform: rotate(-90deg);
+
+/* Opera */
+-o-transform: rotate(-90deg);
+
+/* Internet Explorer */
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+
+}
+#class-descr{
+	text-align: center;
+}
+#club-id-form{
+	text-align: center;
+}
+p{
+  font-family: sans-serif;
+}

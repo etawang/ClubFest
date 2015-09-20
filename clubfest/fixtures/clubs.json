@@ -16,5 +16,32 @@
       "table_id": 4,
       "category": "arts"
     }
+  },
+  {
+    "model": "parakeet.Club",
+    "pk": 3,
+    "fields": {
+      "club_name": "Basketball Club",
+      "table_id": 2,
+      "category": "sprt"
+    }
+  },
+  {
+    "model": "parakeet.Club",
+    "pk": 4,
+    "fields": {
+      "club_name": "Tennis Club",
+      "table_id": 3,
+      "category": "sprt"
+    }
+  },
+  {
+    "model": "parakeet.Club",
+    "pk": 5,
+    "fields": {
+      "club_name": "History Club",
+      "table_id": 9,
+      "category": "arts"
+    }
   }
 ]

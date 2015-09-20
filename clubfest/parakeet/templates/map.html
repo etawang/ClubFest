@@ -1,8 +1,12 @@
 <html>
 <head>
   <title> Clubfest App</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static "clubfest1.css" %}">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
 </head>
 <body>
+<<<<<<< HEAD
 <h2>Search Clubs</h2>
 <form action="/{{highlighted_club}}" method="post">
   {% csrf_token %}
@@ -11,24 +15,49 @@
 </form>
 {% if message %}
   <p>{{ message }}</p>
+=======
+<h1>Clubfest Map</h1>
+<h1>Search Clubs</h1>
+{% if highlighted_club %}
+  <form action="/{{highlighted_club}}" method="get">
+     {% csrf_token %}
+     {{form2}}
+     <input type="submit" value="Search">
+  </form>
+>>>>>>> 54f40e18def8928d2859b18fee3106790798cf7f
 {% endif %}
-<h1>Map</h1>
+<h2 class="exit1">Statler Exit</h2>
+<h2 class="entrance1">Teagle Entrance</h2>
+{% if not user.is_superuser %}
+  <a class="btn" href="/login">Sign in as Admin</a>
+{% endif %}
+{% if user.is_superuser %}
+  <label>Admin Tools</label>
+  <a href="/mapgen">Add Tables</a>
+  <a href="/upload">Upload CSV</a>
+{% endif %}
+<p class="p1">Performance Area</p>
 {% if map %}
-
-  <table>
-    {% for table_row in map.tables %}
+  <table class="table">
+    {% for table_row in map %}
       <tr>
         {% for table in table_row %}
+<<<<<<< HEAD
           {% if table == selected_table or table in selected %}
             <td id="{{ table }}" class="selected">
                 <b>{{ table }}</b>
+=======
+          {% if table.0 == selected_table %}
+            <td id="table-{{ table.0 }}" class="selected {{ table.1 }}">
+                <p class="highlight"><b>X</b></p>
+>>>>>>> 54f40e18def8928d2859b18fee3106790798cf7f
             </td>
           {% else %}
-            <td id="{{ table }}">
-              {% if table %}
-              <a href="{{ table }}">{{ table }}</a>
+            <td id="table-{{ table.0 }}" class="{{ table.1 }}">
+              {% if table.0 %}
+              <p class="clickable"> <a href="{{ table.0 }}">X</a></p>
               {% else %}
-                _
+                <p class="noid">_</p>
               {% endif %}
             </td>
           {% endif %}
@@ -43,8 +72,8 @@
       <p>{{ club.category }}</p>
     </div>
   {% endif %}
-  {% if selected_table %}
-    <form action="/{{ selected_table }}" method="post">
+  {% if selected_table and user.is_superuser %}
+    <form id='club-id-form' action="/{{ selected_table }}" method="post">
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="Save">
