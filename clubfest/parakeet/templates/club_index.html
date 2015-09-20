@@ -1,0 +1,18 @@
+<html>
+<head>
+  <title>Clubfest App</title>
+</head>
+<body>
+  <h1>Index of Clubs</h1>
+  <a href="/">Home</a>
+  <ul class="clubList">
+    {% for club in club_list %}
+      {% if club.0 %}
+        <li><a href="/{{ club.0 }}">{{ club.1 }}</a></li>
+      {% else %}
+        <li>{{ club.1 }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</body>
+</html>
