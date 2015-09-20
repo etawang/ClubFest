@@ -1,22 +1,3 @@
-.sprt{
-  background-color: #ffb05a;
-}
-.buzz{
-  background-color: #86ecff;
-}
-.arts{
-  background-color:  #f2f679;
-}
-.othr{
-  background-color:  #0f6f9a;
-}
-.unassigned{
-  background-color: #d2d4d6;
-}
-.selected{
-	background-color:#f26c63;
-	color:black;
-}
 /* #table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8, #table-9{
 	background-color: #ffb05a;
 } */
@@ -171,4 +152,44 @@ label{
     margin-right: 5%;
     padding: 5%;
     font-family: Raleway;
+}
+.evnt{
+  background-color: #cc8379;
+}
+.sprt{
+  background-color: #ffb05a;
+}
+.spcl{
+  background-color: #998f73;
+}
+.comm{
+  background-color: #9ecc8e;
+}
+.buzz{
+  background-color: #86ecff;
+}
+.rlgn{
+  background-color: #f5a6da;
+}
+.cult{
+  background-color: #784c99;
+}
+.arts{
+  background-color:  #f2f679;
+}
+.chng{
+  background-color: #0f6f9a;
+}
+.sci{
+  background-color: #41993e;
+}
+.othr{
+  background-color:  #41776f;
+}
+.unassigned{
+  background-color: #d2d4d6;
+}
+.selected{
+	background-color:#f26c63;
+	color:black;
 }

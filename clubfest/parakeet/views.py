@@ -45,6 +45,7 @@ def get_club_list():
   club_list = []
   for club in Club.objects.all():
     club_list.append((club.pk, club.club_name))
+  club_list.sort(key=lambda x: x[1])
   return club_list
 
 class ChangeClubForm(forms.Form):

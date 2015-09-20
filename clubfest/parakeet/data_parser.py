@@ -1,3 +1,4 @@
+import csv
 from parakeet.models import Club
 
 def load_clubs(club_file):
@@ -6,12 +7,18 @@ def load_clubs(club_file):
         context['uploadMsg'] = 'Uploaded file is too large.'
         return context
 
-    for line in club_file:
-        info = line.split(',')
-        info = map(lambda x : x.strip(), info)
+    rows = csv.reader(club_file)
+    for line in rows:
+        # Handle incorrectly parsed lines better
+        if len(line) != 2:
+            continue
+        # info = list(csv.reader(line, delimiter=','))
+        info = map(lambda x : x.strip(), line)
         if Club.objects.filter(club_name=info[0]):
             continue
-        c = Club(club_name=info[0], table_id=-1, category=info[1])
-        c.save()
+        for (short, hread) in Club.CATEGORY_CHOICES:
+            if info[1] == hread:
+                c = Club(club_name=info[0], table_id=-1, category=short)
+                c.save()
     context['uploadMsg'] = 'Uploaded file was successfully processed.'
     return context
