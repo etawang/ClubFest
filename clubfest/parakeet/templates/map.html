@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>Clubfest Map</h2>
-<form action="/{{highlighted_club}}" method="post">
+<form class="form1" action="/{{highlighted_club}}" method="post">
   {% csrf_token %}
   {{form2}}
   <input type="submit" name="club_search_form" value="Search">
@@ -15,8 +15,8 @@
 {% if message_1 %}
   <p>{{ message_1 }}</p>
 {% endif %}
-<h3 class="exit1">Statler Exit</h3>
-<h3 class="entrance1">Teagle Entrance</h3>
+<h4 class="exit1">Statler Exit</h4>
+<h4 class="entrance1">Teagle Entrance</h4>
 <div id="navbar">
   <div class="admin">
     {% if not user.is_superuser %}
@@ -42,6 +42,22 @@ Business/ Career - 35<br>
   Social Change - 30<br>
   Science/ Technology<br>
 </h3>
+  {% if club %}
+    <div id='class-descr'>
+      <h3>{{ club.club_name }}</h3>
+      <p>{{ club.get_category_display }}</p>
+    </div>
+  {% endif %}
+  {% if selected_table and user.is_superuser %}
+    <form id='club-id-form' action="/{{ selected_table }}" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" name="club_table_form" value="Save">
+    </form>
+    {% if message %}
+      <p>{{ message }}</p>
+    {% endif %}
+  {% endif %}
 </div>
 <p class="p1">Performance Area</p>
 {% if map %}
@@ -67,22 +83,7 @@ Business/ Career - 35<br>
     {% endfor %}
 
   </table>
-  {% if club %}
-    <div id='class-descr'>
-      <h3>{{ club.club_name }}</h3>
-      <p>{{ club.get_category_display }}</p>
-    </div>
-  {% endif %}
-  {% if selected_table and user.is_superuser %}
-    <form id='club-id-form' action="/{{ selected_table }}" method="post">
-      {% csrf_token %}
-      {{ form }}
-      <input type="submit" name="club_table_form" value="Save">
-    </form>
-    {% if message %}
-      <p>{{ message }}</p>
-    {% endif %}
-  {% endif %}
+
 {% else %}
   <p>No map loaded</p>
 {% endif %}

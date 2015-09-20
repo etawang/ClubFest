@@ -29,9 +29,14 @@ h1{
 }
 h2{
   font-family: Raleway;
-  text-align: center;
-  background-color: #f26c63;
-  height: 20%;
+    text-align: center;
+    background-color: #f26c63;
+    height: 15%;
+    font-size: 300%;
+}
+h4{
+color: white;
+background-color: #34495e;
 }
 body {
 	font-family: Raleway;
@@ -48,10 +53,9 @@ body {
 }
 .exit1{
 	font-family: Raleway;
-    margin-left: -1%;
     float: left;
     margin-top: 40%;
-    padding-left: 1%;
+    padding: 1%;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
 
@@ -172,6 +176,13 @@ label{
     margin-right: 5%;
     padding: 5%;
     font-family: Raleway;
+}
+#club-id-form{
+	float: left;
+	margin-top: －10%;
+}
+.form1{
+	margin-left: 6%;
 }
 .evnt{
   background-color: #cc8379;
