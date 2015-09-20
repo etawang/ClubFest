@@ -52,7 +52,8 @@ class ChangeClubForm(forms.Form):
   
 class SearchClubForm(forms.Form):
     club_name = forms.CharField(label="Club Name:", required=False)
-    club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category", required=False)
+    blank_choice = (('',''),)
+    club_category = forms.ChoiceField (choices=blank_choice+Club.CATEGORY_CHOICES, label="Club category", required=False)
 
 def full_map_for_map(map_obj):
   category_map = []
@@ -87,7 +88,7 @@ def index(request, table_id=None):
             thisclub=Club.objects.filter(club_name=club_name)
             if thisclub and thisclub[0].table_id>=0:
                 table_id=thisclub[0].table_id
-                if club_category=="epty" or club_category==thisclub[0].category:
+                if club_category=="" or club_category==thisclub[0].category:
                     request_dict['highlighted_club']=table_id
                     request_dict['message_1']="The table ID for the club is "+ str(table_id)
                 elif thisclub[0].category!=club_category:

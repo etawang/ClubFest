@@ -7,7 +7,6 @@ class Club(models.Model):
     club_name = models.CharField(max_length=256, default='NoName')
     table_id = models.IntegerField()
     CATEGORY_CHOICES=(
-        ('epty',"Choose"),
         ('spts', "Sports"),
         ('buzz', "Business"),
         ('arts',"Performing Arts"),
