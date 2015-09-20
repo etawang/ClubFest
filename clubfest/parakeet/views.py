@@ -9,7 +9,7 @@ from .models import Map, Table, Club
 from data_parser import load_clubs
 
 class UploadForm(forms.Form):
-	file = forms.FileField()
+    file = forms.FileField()
 
 def admin_login(request):
   logout(request)
@@ -27,26 +27,26 @@ def admin_login(request):
 
 @login_required(login_url='login/')
 def upload(request):
-	if request.method == 'POST':
-		form = UploadForm(request.POST, request.FILES)
-		print request.FILES
-		if form.is_valid():
-			template = loader.get_template('upload_resp.html')
-			context = RequestContext(request, load_clubs(request.FILES['file']))
-			return HttpResponse(template.render(context))
-		return HttpResponseRedirect('/upload/')
-	else:
-		form = UploadForm()
-	template = loader.get_template('upload.html')
-	context = RequestContext(request, {'form': form})
-	return HttpResponse(template.render(context))
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        print request.FILES
+        if form.is_valid():
+            template = loader.get_template('upload_resp.html')
+            context = RequestContext(request, load_clubs(request.FILES['file']))
+            return HttpResponse(template.render(context))
+        return HttpResponseRedirect('/upload/')
+    else:
+        form = UploadForm()
+    template = loader.get_template('upload.html')
+    context = RequestContext(request, {'form': form})
+    return HttpResponse(template.render(context))
 
 class ChangeClubForm(forms.Form):
-	club_id = forms.IntegerField(label="Club ID:")
+    club_id = forms.IntegerField(label="Club ID:")
 
 class SearchClubForm(forms.Form):
-	club_name = forms.CharField(label="Club Name:", required=False)
-	club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category", required=False)
+    club_name = forms.CharField(label="Club Name:", required=False)
+    club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category", required=False)
 
 def full_map_for_map(map_obj):
   category_map = []
@@ -96,38 +96,38 @@ def index(request, table_id=None):
             form = ChangeClubForm()
         request_dict['form'] = form
  
- 	form2 = SearchClubForm(request.POST)
-	if form2.is_valid():
-	  	club_name=form2.cleaned_data['club_name']
-	  	club_category =form2.cleaned_data['club_category']
-	  	print club_name+" "+club_category #comment out afterwards
-	  	if club_name !="":
-	  		#make sure upper and lower case all work
-			thisclub=Club.objects.filter(club_name=club_name)
-		  	if thisclub:
-				if club_category=="Choose" or club_category==thisclub[0].category:
-					print thisclub[0].table_id
-					request_dict['highlighted_club']=thisclub[0].table_id
-					request_dict['message']="The table ID for the club is "+ str(thisclub[0].table_id)
-				elif thisclub[0].category!=club_category:
-					request_dict['message']="The club you are searching is not in the given category. Please check!"
-			else:
-				request_dict['message']="This club cannot be found."
-		elif club_category!="":
-			searchclubs=Club.objects.filter(category=club_category)
-			if searchclubs:
-				selected=[]
-				clubnames=""
-				for eachclub in searchclubs:
-					clubnames+=eachclub.club_name+" "
-					this_tableid=eachclub.table_id
-					selected.append(this_tableid)
-				request_dict['selected']=selected
-				print clubnames
-				request_dict['message']="The clubs to be checked out are highlighted-- "+clubnames
-	request_dict['form2']=form2
-  	context = RequestContext(request, request_dict)
-  	return HttpResponse(template.render(context))
+    form2 = SearchClubForm(request.POST)
+    if form2.is_valid():
+        club_name=form2.cleaned_data['club_name']
+        club_category =form2.cleaned_data['club_category']
+        print club_name+" "+club_category #comment out afterwards
+        if club_name !="":
+            #make sure upper and lower case all work
+            thisclub=Club.objects.filter(club_name=club_name)
+            if thisclub:
+                if club_category=="Choose" or club_category==thisclub[0].category:
+                    print thisclub[0].table_id
+                    request_dict['highlighted_club']=thisclub[0].table_id
+                    request_dict['message']="The table ID for the club is "+ str(thisclub[0].table_id)
+                elif thisclub[0].category!=club_category:
+                    request_dict['message']="The club you are searching is not in the given category. Please check!"
+            else:
+                request_dict['message']="This club cannot be found."
+        elif club_category!="":
+            searchclubs=Club.objects.filter(category=club_category)
+            if searchclubs:
+                selected=[]
+                clubnames=""
+                for eachclub in searchclubs:
+                    clubnames+=eachclub.club_name+" "
+                    this_tableid=eachclub.table_id
+                    selected.append(this_tableid)
+                request_dict['selected']=selected
+                print clubnames
+                request_dict['message']="The clubs to be checked out are highlighted-- "+clubnames
+    request_dict['form2']=form2
+    context = RequestContext(request, request_dict)
+    return HttpResponse(template.render(context))
 
 @login_required(login_url='login/')
 def mapgen(request, row=None, col=None):
