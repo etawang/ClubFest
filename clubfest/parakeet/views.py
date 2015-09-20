@@ -155,13 +155,41 @@ def mapgen(request, row=None, col=None):
     return HttpResponse(template.render(context))
 
 def clubindex(request):
-    club_list = []
+    clubs = []
     for club in Club.objects.all():
         if club.table_id != -1:
-            club_list.append((club.table_id, club.club_name))
+            clubs.append((club.table_id, club.club_name))
         else:
-            club_list.append((0, club.club_name))
-    club_list.sort(key=lambda x: x[1])
+            clubs.append((0, club.club_name))
+    clubs.sort(key=lambda x: x[1])
+
+    # split into list of lists for inserting anchors
+    club_list = []
+    anchors = []
+    if len(clubs) > 0:
+        pos = 0
+        c = clubs[0][1]
+        cur_list = []
+        while not c[0].isalpha():
+            cur_list.append(clubs[pos])
+            pos += 1
+            c = clubs[pos][1]
+        club_list.append((0, cur_list))
+
+        while pos < len(clubs):
+            cur_list = []
+            letter = c[0]
+            while c[0] == letter:
+                cur_list.append(clubs[pos])
+                pos += 1
+                # should rewire this loop to eliminate this redundant check
+                if pos == len(clubs):
+                    break
+                c = clubs[pos][1]
+            club_list.append((letter, cur_list))
+            print cur_list
+            anchors.append(letter)
+
     template = loader.get_template('club_index.html')
-    context = RequestContext(request, {'club_list': club_list})
+    context = RequestContext(request, {'club_index': club_list, 'anchor_list': anchors})
     return HttpResponse(template.render(context))

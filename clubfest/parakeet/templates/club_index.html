@@ -7,15 +7,25 @@
 </head>
 <body>
   <h1>Index of Clubs</h1>
+  <p>
+  {% for a in anchor_list %}
+  <a href="#{{ a }}">{{ a }}</a> 
+  {% endfor %}
+  </p>
   <a href="/" class="btn">Home</a>
-  <ul class="clubList">
-    {% for club in club_list %}
-      {% if club.0 %}
-        <li><a href="/{{ club.0 }}">{{ club.1 }}</a></li>
-      {% else %}
-        <li>{{ club.1 }}</li>
+    {% for club_list in club_index %}
+      {% if club_list.0 %}
+      <a name="{{ club_list.0 }}">{{ club_list.0 }}</a>
       {% endif %}
+      <ul class="clubList">
+        {% for club in club_list.1 %}
+          {% if club.0 %}
+            <li><a href="/{{ club.0 }}">{{ club.1 }}</a></li>
+          {% else %}
+            <li>{{ club.1 }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
     {% endfor %}
-  </ul>
 </body>
 </html>

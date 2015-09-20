@@ -261,3 +261,6 @@ label{
 	background-color: #f26c63;
 	color: black;
 }
+.clubList{
+  list-style-type: square;
+}
