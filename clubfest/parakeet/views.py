@@ -45,6 +45,7 @@ def get_club_list():
   club_list = []
   for club in Club.objects.all():
     club_list.append((club.pk, club.club_name))
+  club_list.sort(key=lambda x: x[1])
   return club_list
 
 class ChangeClubForm(forms.Form):
@@ -61,7 +62,7 @@ def full_map_for_map(map_obj):
     for table in table_row:
       clubs = Club.objects.filter(table_id=table)
       if clubs:
-        map_row.append((table, clubs[0].get_category_display()))
+        map_row.append((table, clubs[0].category))
       elif table:
         map_row.append((table, 'unassigned'))
       else:
