@@ -96,26 +96,6 @@ def index(request, table_id=None):
             form = ChangeClubForm()
         request_dict['form'] = form
 
-		if request.method == 'POST':
-		  	form = ChangeClubForm(request.POST)
-		  	if form.is_valid():
-				data = form.cleaned_data
-				print data
-				if clubs:
-					club = clubs[0]
-				  	club.table_id = -1
-				  	club.save(update_fields=['table_id'])
-				clubs = Club.objects.filter(pk=data['club_id'])
-				if clubs[0]:
-				  	club = clubs[0]
-				  	club.table_id = table_id
-				  	club.save(update_fields=['table_id'])
-				  	request_dict['club'] = clubs[0]
-				  	request_dict['message'] = 'Sucessfully changed club'
-		else:
-	  		form = ChangeClubForm()
-		request_dict['form'] = form
-
  	form2 = SearchClubForm(request.POST)
 	if form2.is_valid():
 	  	club_name=form2.cleaned_data['club_name']
