@@ -41,8 +41,14 @@ def upload(request):
 	context = RequestContext(request, {'form': form})
 	return HttpResponse(template.render(context))
 
+def get_club_list():
+  club_list = []
+  for club in Club.objects.all():
+    club_list.append((club.pk, club.club_name))
+  return club_list
+
 class ChangeClubForm(forms.Form):
-	club_id = forms.IntegerField(label="Club ID:")
+  club_id = forms.ChoiceField(choices=get_club_list(),label="Assign a club to this table:")
 
 class SearchClubForm(forms.Form):
 	club_name = forms.CharField(label="Club Name:")
@@ -83,17 +89,17 @@ def index(request, table_id=None):
             if form.is_valid():
                 data = form.cleaned_data
                 print data
-            if clubs:
-                club = clubs[0]
-                club.table_id = -1
-                club.save(update_fields=['table_id'])
-            clubs = Club.objects.filter(pk=data['club_id'])
-            if clubs[0]:
-                club = clubs[0]
-                club.table_id = table_id
-                club.save(update_fields=['table_id'])
-                request_dict['club'] = clubs[0]
-                request_dict['message'] = 'Sucessfully changed club'
+                if clubs:
+                    club = clubs[0]
+                    club.table_id = -1
+                    club.save(update_fields=['table_id'])
+                clubs = Club.objects.filter(pk=data['club_id'])
+                if clubs[0]:
+                    club = clubs[0]
+                    club.table_id = table_id
+                    club.save(update_fields=['table_id'])
+                    request_dict['club'] = clubs[0]
+                    request_dict['message'] = 'Sucessfully changed club'
         else:
             form = ChangeClubForm()
         request_dict['form'] = form
