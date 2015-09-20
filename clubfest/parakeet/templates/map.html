@@ -10,7 +10,7 @@
 <form action="/{{highlighted_club}}" method="post">
   {% csrf_token %}
   {{form2}}
-  <input type="submit" value="Search">
+  <input type="submit" name="club_search_form" value="Search">
 </form>
 {% if message %}
   <p>{{ message }}</p>
@@ -59,7 +59,7 @@
     <form id='club-id-form' action="/{{ selected_table }}" method="post">
       {% csrf_token %}
       {{ form }}
-      <input type="submit" value="Save">
+      <input type="submit" name="club_table_form" value="Save">
     </form>
     {% if message %}
       <p>{{ message }}</p>

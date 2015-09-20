@@ -69,6 +69,38 @@ def index(request, table_id=None):
     template = loader.get_template('map.html')
     request_dict = {}
     request_dict['map'] = full_map_for_map(map_obj)
+    if 'club_search_form' is in request.POST:
+        form2 = SearchClubForm(request.POST)
+        if form2.is_valid():
+            club_name=form2.cleaned_data['club_name']
+            club_category =form2.cleaned_data['club_category']
+            print club_name+" "+club_category #comment out afterwards
+            if club_name !="":
+                #make sure upper and lower case all work
+                thisclub=Club.objects.filter(club_name=club_name)
+                if thisclub and thisclub[0].table_id>=0:
+                    table_id=thisclub[0].table_id
+                    if club_category=="epty" or club_category==thisclub[0].category:
+                        request_dict['highlighted_club']=table_id
+                        request_dict['message']="The table ID for the club is "+ str(table_id)
+                    elif thisclub[0].category!=club_category:
+                        request_dict['message']="The club you are searching is not in the given category. Please check!"
+                else:
+                    request_dict['message']="This club cannot be found."
+            elif club_category!="":
+                searchclubs=Club.objects.filter(category=club_category)
+                if searchclubs:
+                    selected=[]
+                    clubnames=""
+                    for eachclub in searchclubs:
+                        clubnames+=eachclub.club_name+" "
+                        this_tableid=eachclub.table_id
+                        selected.append(this_tableid)
+                    request_dict['selected']=selected
+                    print clubnames
+                    request_dict['message']="The clubs to be checked out are highlighted: "+clubnames
+        request_dict['form2']=form2
+
     if table_id:
         table_id = int(table_id)
         clubs = Club.objects.filter(table_id=table_id)
@@ -76,7 +108,7 @@ def index(request, table_id=None):
             request_dict['club'] = clubs[0]
         request_dict['selected_table'] = table_id
 
-        if request.method == 'POST':
+        if request.method == 'POST' and 'club_table_form' in request.POST:
             form = ChangeClubForm(request.POST)
             if form.is_valid():
                 data = form.cleaned_data
@@ -95,37 +127,6 @@ def index(request, table_id=None):
         else:
             form = ChangeClubForm()
         request_dict['form'] = form
- 
-    form2 = SearchClubForm(request.POST)
-    if form2.is_valid():
-        club_name=form2.cleaned_data['club_name']
-        club_category =form2.cleaned_data['club_category']
-        print club_name+" "+club_category #comment out afterwards
-        if club_name !="":
-            #make sure upper and lower case all work
-            thisclub=Club.objects.filter(club_name=club_name)
-            if thisclub:
-                if club_category=="Choose" or club_category==thisclub[0].category:
-                    print thisclub[0].table_id
-                    request_dict['highlighted_club']=thisclub[0].table_id
-                    request_dict['message']="The table ID for the club is "+ str(thisclub[0].table_id)
-                elif thisclub[0].category!=club_category:
-                    request_dict['message']="The club you are searching is not in the given category. Please check!"
-            else:
-                request_dict['message']="This club cannot be found."
-        elif club_category!="":
-            searchclubs=Club.objects.filter(category=club_category)
-            if searchclubs:
-                selected=[]
-                clubnames=""
-                for eachclub in searchclubs:
-                    clubnames+=eachclub.club_name+" "
-                    this_tableid=eachclub.table_id
-                    selected.append(this_tableid)
-                request_dict['selected']=selected
-                print clubnames
-                request_dict['message']="The clubs to be checked out are highlighted-- "+clubnames
-    request_dict['form2']=form2
     context = RequestContext(request, request_dict)
     return HttpResponse(template.render(context))
 
