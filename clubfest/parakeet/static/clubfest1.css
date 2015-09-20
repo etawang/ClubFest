@@ -2,9 +2,9 @@
 	background-color:#f26c63;
 	color:black;
 }
-#table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8, #table-9{
+/* #table-1, #table-2, #table-3, #table-4, #table-5, #table-6, #table-7, #table-8, #table-9{
 	background-color: #ffb05a;
-}
+} */
 .clickable{
 	color: red;
 }
@@ -79,4 +79,19 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 p{
   font-family: sans-serif;
+}
+.sprt{
+  background-color: #ffb05a;
+}
+.buzz{
+  background-color: #86ecff;
+}
+.arts{
+  background-color:  #f2f679;
+}
+.othr{
+  background-color:  #0f6f9a;
+}
+.unassigned{
+  background-color: #d2d4d6;
 }
