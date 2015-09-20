@@ -22,9 +22,11 @@
   <a class="btn" href="/login">Sign in as Admin</a>
 {% endif %}
 {% if user.is_superuser %}
+<div class="admin">
   <label>Admin Tools</label>
-  <a href="/mapgen">Add Tables</a>
-  <a href="/upload">Upload CSV</a>
+  <a class="add" href="/mapgen">Add Tables</a>
+  <a class="upload" href="/upload">Upload CSV</a>
+  </div>
 {% endif %}
 <h3 id="catg1">Event Planning/ Publications - 16<br>
 Recreational Sports - 45<br>

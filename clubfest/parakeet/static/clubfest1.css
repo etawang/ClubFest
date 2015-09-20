@@ -34,7 +34,7 @@ h2{
     color: white;
     margin: auto;
     width: 30%;
-    margin-top: 12%;
+    margin-top: 15%;
     font-size: 125%;
 }
 .exit1{
@@ -87,6 +87,51 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 p{
   font-family: Raleway;
+}
+.admin{
+	float: right;
+	margin-right: -10%;
+}
+.add{
+	font-family: Raleway;
+	border: none;
+	background: #ffb05a;
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+	text-decoration: none;
+}
+.add:hover{
+	font-family: Raleway;
+	background: rgba(0,0,0,0);
+	color: black;
+	box-shadow: inset 0 0 0 3px #ffb05a;
+}
+.upload{
+	font-family: Raleway;
+	border: none;
+	background: #ffb05a;
+	color: #f2f2f2;
+	padding: 10px;
+	font-size: 18px;
+	border-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+	transition: all 500ms ease; 
+	text-decoration: none;
+}
+.upload:hover{
+	font-family: Raleway;
+	background: rgba(0,0,0,0);
+	color: black;
+	box-shadow: inset 0 0 0 3px #ffb05a;
+}
+label{
+	font-family: Raleway;
 }
 #catg1{
 	margin-top: -4%;
