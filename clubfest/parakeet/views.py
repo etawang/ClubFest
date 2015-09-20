@@ -95,7 +95,7 @@ def index(request, table_id=None):
         else:
             form = ChangeClubForm()
         request_dict['form'] = form
-
+ 
  	form2 = SearchClubForm(request.POST)
 	if form2.is_valid():
 	  	club_name=form2.cleaned_data['club_name']
