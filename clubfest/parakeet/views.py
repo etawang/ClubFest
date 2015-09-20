@@ -45,84 +45,63 @@ def full_map_for_map(map_obj):
   return category_map
 
 def index(request, table_id=None):
-	try:
-		map_obj = Map.objects.get(id=1)
-  	except Map.DoesNotExist:
-		pass
-  	template = loader.get_template('map.html')
-  	request_dict = {}
-  	request_dict['map'] = full_map_for_map(map_obj)
-  	if table_id:
-		table_id = int(table_id)
-		clubs = Club.objects.filter(table_id=table_id)
-		if clubs:
-			request_dict['club'] = clubs[0]
-		request_dict['selected_table'] = table_id
-
-		if request.method == 'POST':
-		  	form = ChangeClubForm(request.POST)
-		  	if form.is_valid():
-				data = form.cleaned_data
-				print data
-			if clubs:
-				club = clubs[0]
-			  	club.table_id = -1
-			  	club.save(update_fields=['table_id'])
-			clubs = Club.objects.filter(pk=data['club_id'])
-			if clubs[0]:
-			  	club = clubs[0]
-			  	club.table_id = table_id
-			  	club.save(update_fields=['table_id'])
-			  	request_dict['club'] = clubs[0]
-			  	request_dict['message'] = 'Sucessfully changed club'
-		else:
-		  	form = ChangeClubForm()
-		request_dict['form'] = form
-
-	if request.method == 'GET':
-	 	form2 = SearchClubForm(request.GET)
-		if form2.is_valid():
-		  	club_name=form2.cleaned_data['club_name']
-		  	club_category =form2.cleaned_data['club_category']
-		  	if club_name !="":
-				thisclub=Club.objects.filter(club_name=club_name)
-			  	if thisclub:
-					if club_category=="":
-						request_dict['highlighted_club']=thisclub[0].table_id
-					elif thisclub[0].category==club_category:
-						print "The club you are searching is not in the given category. Please check!"
-				else:
-					print "This club cannot be found."
-			else:
-				searchclubs=Club.objects.filter(club_category=club_category[0])
-				if searchclubs:
-					for eachclub in searchclubs:
-						print eachclub.club_name
-						this_tableid=eachclub.table_id
-		request_dict['form2']=form2
-  	context = RequestContext(request, request_dict)
-  	return HttpResponse(template.render(context))
-    if request.method == 'POST':
-      form = ChangeClubForm(request.POST)
-      if form.is_valid():
-        data = form.cleaned_data
-        print data
+    try:
+        map_obj = Map.objects.get(id=1)
+    except Map.DoesNotExist:
+        pass
+    template = loader.get_template('map.html')
+    request_dict = {}
+    request_dict['map'] = full_map_for_map(map_obj)
+    if table_id:
+        table_id = int(table_id)
+        clubs = Club.objects.filter(table_id=table_id)
         if clubs:
-          club = clubs[0]
-          club.table_id = -1
-          club.save(update_fields=['table_id'])
-        clubs = Club.objects.filter(pk=data['club_id'])
-        if clubs[0]:
-          club = clubs[0]
-          club.table_id = table_id
-          club.save(update_fields=['table_id'])
-          request_dict['club'] = clubs[0]
-          request_dict['message'] = 'Sucessfully changed club'
-    else:
-      form = ChangeClubForm()
-    request_dict['form'] = form
-  context = RequestContext(request, request_dict)
-  return HttpResponse(template.render(context))
+            request_dict['club'] = clubs[0]
+        request_dict['selected_table'] = table_id
+
+        if request.method == 'POST':
+            form = ChangeClubForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                print data
+            if clubs:
+                club = clubs[0]
+                club.table_id = -1
+                club.save(update_fields=['table_id'])
+            clubs = Club.objects.filter(pk=data['club_id'])
+            if clubs[0]:
+                club = clubs[0]
+                club.table_id = table_id
+                club.save(update_fields=['table_id'])
+                request_dict['club'] = clubs[0]
+                request_dict['message'] = 'Sucessfully changed club'
+        else:
+            form = ChangeClubForm()
+        request_dict['form'] = form
+
+    if request.method == 'GET':
+        form2 = SearchClubForm(request.GET)
+        if form2.is_valid():
+            club_name=form2.cleaned_data['club_name']
+            club_category =form2.cleaned_data['club_category']
+            if club_name !="":
+                thisclub=Club.objects.filter(club_name=club_name)
+                if thisclub:
+                    if club_category=="":
+                        request_dict['highlighted_club']=thisclub[0].table_id
+                    elif thisclub[0].category==club_category:
+                        print "The club you are searching is not in the given category. Please check!"
+                else:
+                    print "This club cannot be found."
+            else:
+                searchclubs=Club.objects.filter(club_category=club_category[0])
+                if searchclubs:
+                    for eachclub in searchclubs:
+                        print eachclub.club_name
+                        this_tableid=eachclub.table_id
+        request_dict['form2']=form2
+    context = RequestContext(request, request_dict)
+    return HttpResponse(template.render(context))
 
 def mapgen(request, row=None, col=None):
     map_obj = Map.objects.get(id=1)
