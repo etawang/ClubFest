@@ -41,9 +41,15 @@ def upload(request):
     context = RequestContext(request, {'form': form})
     return HttpResponse(template.render(context))
 
-class ChangeClubForm(forms.Form):
-    club_id = forms.IntegerField(label="Club ID:")
+def get_club_list():
+  club_list = []
+  for club in Club.objects.all():
+    club_list.append((club.pk, club.club_name))
+  return club_list
 
+class ChangeClubForm(forms.Form):
+  club_id = forms.ChoiceField(choices=get_club_list(),label="Assign a club to this table:")
+  
 class SearchClubForm(forms.Form):
     club_name = forms.CharField(label="Club Name:", required=False)
     club_category = forms.ChoiceField (choices=Club.CATEGORY_CHOICES, label="Club category", required=False)
@@ -56,6 +62,8 @@ def full_map_for_map(map_obj):
       clubs = Club.objects.filter(table_id=table)
       if clubs:
         map_row.append((table, clubs[0].category))
+      elif table:
+        map_row.append((table, 'unassigned'))
       else:
         map_row.append((table, 'blank'))
     category_map.append(map_row)
