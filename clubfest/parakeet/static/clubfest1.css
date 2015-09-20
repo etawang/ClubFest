@@ -14,7 +14,10 @@ td {
 	width: 5%;
 }
 .table{
- background-color: #34495e;
+     background-color: #34495e;
+    width: 80%;
+    text-align: center;
+    margin: auto;
 }
 h1{
 	background-color: #f26c63;
@@ -25,13 +28,17 @@ h2{
   font-family: Raleway;
 }
 .p1{
-	background-color: #34495e;
-	text-align: center;
-	color: white;
-	margin: auto;
-	width: 10%;
+	font-family: Raleway;
+    background-color: #34495e;
+    text-align: center;
+    color: white;
+    margin: auto;
+    width: 30%;
+    margin-top: 12%;
+    font-size: 125%;
 }
 .exit1{
+	font-family: Raleway;
 	float: left;
 	margin-top: 10%;
 	padding: 1%;
@@ -52,6 +59,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
 .entrance1{
+	font-family: Raleway;
 	float: right;
 	margin-top: 10%;
 	padding: 1%;
@@ -77,22 +85,20 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 #club-id-form{
 	text-align: center;
 }
-<<<<<<< Updated upstream
 p{
-  font-family: sans-serif;
+  font-family: Raleway;
 }
-=======
 #catg1{
 	margin-top: -4%;
     float: left;
     margin-left: 5%;
     padding: 5%;
-
+    font-family: Raleway;
 }
 #catg2{
 	margin-top: -4%;
     float: right;
     margin-right: 5%;
     padding: 5%;
+    font-family: Raleway;
 }
->>>>>>> Stashed changes
