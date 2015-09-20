@@ -100,7 +100,7 @@ def index(request, table_id=None):
                 selected=[]
                 clubnames=""
                 for eachclub in searchclubs:
-                    clubnames+=eachclub.club_name+" "
+                    clubnames+=eachclub.club_name+", "
                     this_tableid=eachclub.table_id
                     selected.append(this_tableid)
                 request_dict['selected']=selected
