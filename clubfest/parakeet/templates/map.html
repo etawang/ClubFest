@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:200">
 </head>
 <body>
-<<<<<<< HEAD
 <h2>Search Clubs</h2>
 <form action="/{{highlighted_club}}" method="post">
   {% csrf_token %}
@@ -15,16 +14,6 @@
 </form>
 {% if message %}
   <p>{{ message }}</p>
-=======
-<h1>Clubfest Map</h1>
-<h1>Search Clubs</h1>
-{% if highlighted_club %}
-  <form action="/{{highlighted_club}}" method="get">
-     {% csrf_token %}
-     {{form2}}
-     <input type="submit" value="Search">
-  </form>
->>>>>>> 54f40e18def8928d2859b18fee3106790798cf7f
 {% endif %}
 <h2 class="exit1">Statler Exit</h2>
 <h2 class="entrance1">Teagle Entrance</h2>
@@ -42,15 +31,9 @@
     {% for table_row in map %}
       <tr>
         {% for table in table_row %}
-<<<<<<< HEAD
-          {% if table == selected_table or table in selected %}
-            <td id="{{ table }}" class="selected">
-                <b>{{ table }}</b>
-=======
-          {% if table.0 == selected_table %}
+          {% if table.0 == selected_table or table.0 in selected %}
             <td id="table-{{ table.0 }}" class="selected {{ table.1 }}">
                 <p class="highlight"><b>X</b></p>
->>>>>>> 54f40e18def8928d2859b18fee3106790798cf7f
             </td>
           {% else %}
             <td id="table-{{ table.0 }}" class="{{ table.1 }}">
