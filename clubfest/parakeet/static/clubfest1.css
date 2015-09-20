@@ -28,7 +28,7 @@ h2{
   font-family: Raleway;
     text-align: center;
     background-color: #f26c63;
-    height: 15%;
+    height: 20%;
     font-size: 300%;
 }
 h4{
@@ -45,14 +45,17 @@ body {
     color: white;
     margin: auto;
     width: 30%;
-    margin-top: 20%;
+    margin-top: 25%;
     font-size: 185%;
 }
 .exit1{
 	font-family: Raleway;
     float: left;
+    width: 20%;
     margin-top: 40%;
     padding: 1%;
+    margin-left: -10%;
+    text-align: center;
 	/* Safari */
 -webkit-transform: rotate(-90deg);
 
@@ -72,7 +75,8 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 .entrance1{
 	font-family: Raleway;
     float: right;
-    margin-right: -1%;
+    width: 20%;
+    margin-right: -10%;
     margin-top: 40%;
     padding: 1%;
 
@@ -95,8 +99,9 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 #club-id-form{
 	text-align: center;
-	margin-top: 10%;
-    margin-left: -40%;
+    margin: auto;
+    margin-top: -20%;
+   
     
 }
 p{
@@ -193,7 +198,7 @@ label{
 #catg2{
 	margin-top: -19%;
     float: right;
-    margin-right: 21%;
+    margin-right: 15%;
     padding: 5%;
     font-family: Raleway;
 }
@@ -202,13 +207,10 @@ label{
 	margin-left: 6%;
 }
 .table1{
-	margin-top: -15%;
+	margin-top: -20%;
 }
 .msg{
 	text-align: center;
-	width: 120%;
-    margin-left: 45%;
-    margin-top: -7%;
     font-size: 270%;
     background-color: #cecece;
     border-radius: 5px;
@@ -222,7 +224,10 @@ label{
     width: 150%;
 }
 #class-descr{
-	float: right;
+	margin-top: 6%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 .evnt{
   background-color: #cc8379;
