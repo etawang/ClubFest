@@ -47,8 +47,8 @@ Business/ Career<br>
 </h3>
   {% if club %}
     <div id='class-descr'>
-      <h3>{{ club.club_name }}</h3>
-      <p>{{ club.get_category_display }}</p>
+      <h3 class="msg">{{ club.club_name }}</h3>
+      <p class="msg1">{{ club.get_category_display }}</p>
     </div>
   {% endif %}
   {% if selected_table and user.is_superuser %}

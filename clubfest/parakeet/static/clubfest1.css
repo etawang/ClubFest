@@ -92,9 +92,7 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 }
-#class-descr{
-	text-align: center;
-}
+
 #club-id-form{
 	text-align: center;
 }
@@ -203,6 +201,22 @@ label{
 }
 .form1{
 	margin-left: 6%;
+}
+.msg{
+	    margin-top: -7%;
+    font-size: 270%;
+    background-color: #cecece;
+    border-radius: 5px;
+    padding: 5px;
+}
+.msg1{
+	   margin-top: -35%;
+    font-size: 150%;
+    margin-left: 120%;
+    width: 150%;
+}
+#class-descr{
+	float: right;
 }
 .evnt{
   background-color: #cc8379;
