@@ -203,16 +203,19 @@ label{
 	margin-left: 6%;
 }
 .msg{
-	    margin-top: -7%;
+	   width: 120%;
+    margin-left: 45%;
+    margin-top: -7%;
     font-size: 270%;
     background-color: #cecece;
     border-radius: 5px;
     padding: 5px;
 }
 .msg1{
-	   margin-top: -35%;
+	  margin-top: -15%;
     font-size: 150%;
-    margin-left: 120%;
+    margin-left: 160%;
+    text-align: center;
     width: 150%;
 }
 #class-descr{
