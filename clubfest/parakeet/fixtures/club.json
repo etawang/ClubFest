@@ -1,11 +1,29 @@
 [
   {
     "model": "parakeet.Club",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "club_name": "Welcome Weekend",
       "table_id": 1,
       "category": "othr"
+    }
+  },
+  {
+  	"model": "parakeet.Club",
+  	"pk":2,
+  	"fields": {
+      "club_name": "SUB",
+      "table_id": 2,
+      "category": "othr"
+    }
+  }
+  {
+    "model": "parakeet.Club",
+    "pk":3,
+    "fields": {
+      "club_name": "GCC",
+      "table_id": 3,
+      "category": "Business"
     }
   }
 ]
