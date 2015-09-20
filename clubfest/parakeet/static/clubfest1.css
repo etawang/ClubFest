@@ -1,4 +1,19 @@
-.highlight{
+.sprt{
+  background-color: #ffb05a;
+}
+.buzz{
+  background-color: #86ecff;
+}
+.arts{
+  background-color:  #f2f679;
+}
+.othr{
+  background-color:  #0f6f9a;
+}
+.unassigned{
+  background-color: #d2d4d6;
+}
+.selected{
 	background-color:#f26c63;
 	color:black;
 }
@@ -8,7 +23,10 @@
 .clickable{
 	color: red;
 }
-
+a {
+  color: black;
+  text-decoration: none;
+}
 td {
 	height: 5%;
 	width: 5%;
@@ -27,6 +45,9 @@ h1{
 }
 h2{
   font-family: Raleway;
+}
+body {
+	font-family: Raleway;
 }
 .p1{
 	font-family: Raleway;
@@ -147,19 +168,4 @@ label{
     margin-right: 5%;
     padding: 5%;
     font-family: Raleway;
-}
-.sprt{
-  background-color: #ffb05a;
-}
-.buzz{
-  background-color: #86ecff;
-}
-.arts{
-  background-color:  #f2f679;
-}
-.othr{
-  background-color:  #0f6f9a;
-}
-.unassigned{
-  background-color: #d2d4d6;
 }
